@@ -123,8 +123,8 @@ class OAuthHandler(AuthHandler):
             resp = urlopen(Request(url, headers=request.to_header()))
             self.access_token = oauth.OAuthToken.from_string(resp.read())
             
-            print 'Access token key: '+ str(self.access_token.key)
-            print 'Access token secret: '+ str(self.access_token.secret)
+            # print 'Access token key: '+ str(self.access_token.key)
+            # print 'Access token secret: '+ str(self.access_token.secret)
             
             return self.access_token
         except Exception, e:

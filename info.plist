@@ -7,8 +7,7 @@
 	<key>category</key>
 	<string>SCRIPTS</string>
 	<key>command</key>
-	<string>WB = $(python ./setup.py "{query}")
-echo $WB</string>
+	<string>python ./setup.py "{query}"</string>
 	<key>disabled</key>
 	<false/>
 	<key>escapequery</key>
@@ -36,6 +35,6 @@ echo $WB</string>
 	<key>subtitle</key>
 	<string></string>
 	<key>title</key>
-	<string>新浪微薄</string>
+	<string>帽子围脖</string>
 </dict>
 </plist>
