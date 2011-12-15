@@ -31,16 +31,15 @@ class AlfredWeibo():
 		request_token = self.auth.request_token.key
 		request_token_secret = self.auth.request_token.secret
 
-		if (request_token != None and request_token.length > 0
-		and request_token_secret != None and request_token_secret.length > 0):
+		if (request_token != None and request_token.count > 0):
 			print "wb pin <浏览器里的pin>"
 			self.setting['request_token'] = request_token
 			self.setting['request_token_secret'] = request_token_secret
 			self.save_setting()
+			webbrowser.open(auth_url)
 		else:
 			print '出错啦，等下在搞吧～～'
 
-		webbrowser.open(auth_url)
 
 	def get_access_token(self,pin):
 		self.load_setting()
@@ -48,13 +47,13 @@ class AlfredWeibo():
 		access_token = self.auth.get_access_token(pin);
 
 		if (access_token.key != None and access_token.secret != None
-		and access_token.key.length >0 and access_token.secret.length >0):
-
+		and access_token.key.count >0 and access_token.secret.count >0):
 			self.setting['access_token'] = access_token.key;
 			self.setting['access_token_secret'] = access_token.secret;
 			self.save_setting()
-
 			print '好了，搞定了！可以发微博啦～～～～'
+		else:
+			print "出错啦，等下在搞吧～～"
 
 	def update_weibo(self,message):
 		self.load_setting()
