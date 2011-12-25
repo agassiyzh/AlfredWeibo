@@ -67,15 +67,27 @@ class AlfredWeibo():
 		if(is_updated):
 			print '你又在微博上跟大家说了一句话~~'
 
+	def new_direct_message (self,who,message):
+		self.load_setting()
+		self.auth.set_request_token(self.setting['request_token'],self.setting['request_token_secret'])
+		self.auth.set_access_token(self.setting['access_token'],self.setting['access_token_secret'])
+
+		api = API(self.auth)
+
+		is_updated = api.new_direct_message(who,message)
+
+		if(is_updated):
+			print '成功!~~~'
+
 
 def main():
     argv = sys.argv[1:][0]
     parm = argv.split(" ")
 
-    alfredWeibo = AlfredWeibo();
+    alfredWeibo = AlfredWeibo()
 
     if(parm[0] == "setup"):
-    	alfredWeibo.get_pin();
+    	alfredWeibo.get_pin()
     if(parm[0] == "pin"):
     	alfredWeibo.get_access_token(parm[1])
     else:
